@@ -23,4 +23,20 @@ interface ClearQuestionsAction {
   type: typeof CLEAR_QUESTIONS;
 }
 
-export type QuestionsActionTypes = PushQuestionsAction | ClearQuestionsAction;
+export const INCREASE_QUESTION_COUNT = 'INCREASE_QUESTION_COUNT';
+
+interface IncreaseQuestionCountAction {
+  type: typeof INCREASE_QUESTION_COUNT;
+}
+
+export const RESET_QUESTION_COUNT = 'RESET_QUESTION_COUNT';
+
+interface ResetQuestionCountAction {
+  type: typeof RESET_QUESTION_COUNT;
+}
+
+export type QuestionsActionTypes =
+  | PushQuestionsAction
+  | ClearQuestionsAction
+  | IncreaseQuestionCountAction
+  | ResetQuestionCountAction;

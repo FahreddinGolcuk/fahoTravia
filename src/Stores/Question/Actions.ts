@@ -1,4 +1,10 @@
-import {CLEAR_QUESTIONS, PUSH_QUESTIONS, QuestionsActionTypes} from './Types';
+import {
+  CLEAR_QUESTIONS,
+  INCREASE_QUESTION_COUNT,
+  PUSH_QUESTIONS,
+  QuestionsActionTypes,
+  RESET_QUESTION_COUNT,
+} from './Types';
 import QuestionService from '@Services/QuestionService';
 
 export async function pushQuestions(payload: {
@@ -19,5 +25,17 @@ export async function pushQuestions(payload: {
 export function clearQuestions(): QuestionsActionTypes {
   return {
     type: CLEAR_QUESTIONS,
+  };
+}
+
+export function increaseQuestionCount(): QuestionsActionTypes {
+  return {
+    type: INCREASE_QUESTION_COUNT,
+  };
+}
+
+export function resetQuestionCount(): QuestionsActionTypes {
+  return {
+    type: RESET_QUESTION_COUNT,
   };
 }
