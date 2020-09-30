@@ -27,6 +27,7 @@ const ChoiceScreen = (): JSX.Element => {
         items={itemsDifficulties}
       />
       <Button
+        style={{margin: 80}}
         title="GO!"
         onPress={() =>
           NavigationHelper.navigate('StartSplash', {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import {FlexStyle, Text, TouchableOpacity} from 'react-native';
 import {Colors} from '@Theme/index';
 import _style from './style';
 
@@ -9,6 +9,7 @@ interface ButtonProps {
   size?: 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge';
   backgroundColor?: string;
   disable?: boolean;
+  style?: FlexStyle | FlexStyle[];
 }
 
 const Button: React.FunctionComponent<ButtonProps> = ({
@@ -17,12 +18,14 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   title,
   onPress,
   disable = false,
+  style = {},
 }): JSX.Element => {
   return (
     <TouchableOpacity
       style={[
         _style.container,
         _style[size],
+        style,
         {backgroundColor: backgroundColor},
       ]}
       disabled={disable}
