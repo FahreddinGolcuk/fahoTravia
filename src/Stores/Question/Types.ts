@@ -2,12 +2,14 @@ export interface QuestionsState {
   whichQuestion: number;
   questions: Array<object>;
   difficult: string;
+  score: number;
 }
 
 export interface QuestionEditPayload {
   whichQuestion?: number;
   questions?: Array<object>;
   difficult?: string;
+  score?: number;
 }
 
 export const PUSH_QUESTIONS = 'PUSH_QUESTIONS';
@@ -35,8 +37,23 @@ interface ResetQuestionCountAction {
   type: typeof RESET_QUESTION_COUNT;
 }
 
+export const RESET_SCORE = 'RESET_SCORE';
+
+interface ResetScoreAction {
+  type: typeof RESET_SCORE;
+}
+
+export const ADD_SCORE = 'ADD_SCORE';
+
+interface AddScoreAction {
+  type: typeof ADD_SCORE;
+  payload: QuestionEditPayload;
+}
+
 export type QuestionsActionTypes =
   | PushQuestionsAction
   | ClearQuestionsAction
   | IncreaseQuestionCountAction
-  | ResetQuestionCountAction;
+  | ResetQuestionCountAction
+  | ResetScoreAction
+  | AddScoreAction;

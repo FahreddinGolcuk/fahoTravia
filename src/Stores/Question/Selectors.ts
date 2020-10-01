@@ -5,3 +5,5 @@ export const getQuestions = (state: AppState): Array<object> =>
 
 export const getQuestionCount = (state: AppState): number =>
   state.questions.whichQuestion;
+
+export const getScore = (state: AppState): number => state.questions.score;

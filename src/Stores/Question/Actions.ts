@@ -1,9 +1,11 @@
 import {
+  ADD_SCORE,
   CLEAR_QUESTIONS,
   INCREASE_QUESTION_COUNT,
   PUSH_QUESTIONS,
   QuestionsActionTypes,
   RESET_QUESTION_COUNT,
+  RESET_SCORE,
 } from './Types';
 import QuestionService from '@Services/QuestionService';
 
@@ -37,5 +39,18 @@ export function increaseQuestionCount(): QuestionsActionTypes {
 export function resetQuestionCount(): QuestionsActionTypes {
   return {
     type: RESET_QUESTION_COUNT,
+  };
+}
+
+export function resetScore(): QuestionsActionTypes {
+  return {
+    type: RESET_SCORE,
+  };
+}
+
+export function addScore(payload: {score: number}): QuestionsActionTypes {
+  return {
+    type: ADD_SCORE,
+    payload,
   };
 }

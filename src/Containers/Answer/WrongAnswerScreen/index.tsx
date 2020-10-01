@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {AnimatedImage, Background, Button} from '@Components/index';
 import {Text} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {resetQuestionCount} from '@Stores/Question/Actions';
+import {resetQuestionCount, resetScore} from '@Stores/Question/Actions';
 import NavigationHelper from '@Plugins/NavigationHelper';
 import {Colors} from '@Theme/index';
 import {normalize} from '@Utils/Device';
@@ -12,6 +12,7 @@ const WrongAnswerScreen = (): JSX.Element => {
   useEffect(() => {
     (async () => {
       dispatch(resetQuestionCount());
+      dispatch(resetScore());
     })();
   }, [dispatch]);
 
