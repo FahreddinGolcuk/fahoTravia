@@ -28,8 +28,8 @@ const Picker: React.FunctionComponent<PickerProps> = ({
     <PickerNative
       style={{
         height: normalize(50),
-        width: deviceWidth(),
-        margin: normalize(75),
+        width: deviceWidth() / 2,
+        margin: normalize(50),
       }}
       selectedValue={selectedValue}
       onValueChange={(itemValue, itemIndex) => onChange(itemValue, itemIndex)}>
