@@ -3,6 +3,8 @@ import {Background, Button, Picker} from '@Components/index';
 import NavigationHelper from '@Plugins/NavigationHelper';
 import {itemsCategory, itemsDifficulties} from '@Utils/Items';
 import {Text} from 'react-native';
+import _style from './style';
+import {normalize} from '@Utils/Device';
 
 const ChoiceScreen = (): JSX.Element => {
   const [selectedCategory, setSelectedCategory] = useState(
@@ -14,8 +16,8 @@ const ChoiceScreen = (): JSX.Element => {
 
   return (
     <Background>
-      <Text>WELCOME TO FAHOTRAVIA</Text>
-      <Text>Choose your category & difficult</Text>
+      <Text style={_style.title}>WELCOME TO FAHOTRAVIA</Text>
+      <Text style={_style.subtitle}>Choose your category & difficult</Text>
       <Picker
         selectedValue={selectedCategory}
         onChange={setSelectedCategory}
@@ -27,7 +29,7 @@ const ChoiceScreen = (): JSX.Element => {
         items={itemsDifficulties}
       />
       <Button
-        style={{margin: 80}}
+        style={{margin: normalize(75)}}
         title="GO!"
         onPress={() =>
           NavigationHelper.navigate('StartSplash', {

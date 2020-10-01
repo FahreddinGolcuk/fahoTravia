@@ -8,6 +8,8 @@ import {
   SplashScreen,
   ChoiceScreen,
   GameStartSplashScreen,
+  WonScreen,
+  TimePassedScreen,
 } from '@Containers/index';
 import {isReadyRef, navigationRef} from '@Plugins/NavigationHelper';
 
@@ -31,9 +33,15 @@ const Navigators = () => {
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Choice" component={ChoiceScreen} />
         <Stack.Screen name="StartSplash" component={GameStartSplashScreen} />
-        <Stack.Screen name="Game" component={GameScreen} />
+        <Stack.Screen
+          initialParams={{time: 15, joker: false}}
+          name="Game"
+          component={GameScreen}
+        />
         <Stack.Screen name="Wrong" component={WrongAnswerScreen} />
+        <Stack.Screen name="TimePass" component={TimePassedScreen} />
         <Stack.Screen name="Correct" component={CorrectAnswerScreen} />
+        <Stack.Screen name="Won" component={WonScreen} />
         <Stack.Screen name="Splash" component={SplashScreen} />
       </Stack.Navigator>
     </NavigationContainer>

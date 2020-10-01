@@ -1,20 +1,22 @@
 import React from 'react';
-import {FlexStyle, Text, TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity, ViewStyle} from 'react-native';
 import {Colors} from '@Theme/index';
 import _style from './style';
 
 interface ButtonProps {
   title: string;
+  titleColor?: string;
   onPress: () => void;
   size?: 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge';
   backgroundColor?: string;
   disable?: boolean;
-  style?: FlexStyle | FlexStyle[];
+  style?: ViewStyle | ViewStyle[];
 }
 
 const Button: React.FunctionComponent<ButtonProps> = ({
   size = 'medium',
   backgroundColor = Colors.danger,
+  titleColor = Colors.primary,
   title,
   onPress,
   disable = false,
@@ -26,11 +28,11 @@ const Button: React.FunctionComponent<ButtonProps> = ({
         _style.container,
         _style[size],
         style,
-        {backgroundColor: backgroundColor},
+        {backgroundColor: !disable ? backgroundColor : 'grey'},
       ]}
       disabled={disable}
       onPress={onPress}>
-      <Text style={_style.title}>{title}</Text>
+      <Text style={[_style.title, {color: titleColor}]}>{title}</Text>
     </TouchableOpacity>
   );
 };
