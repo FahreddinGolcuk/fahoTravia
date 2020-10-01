@@ -6,12 +6,14 @@ interface CountdownProps {
   until: number;
   stop?: number;
   onFinish?: () => void;
+  onChange?: (current: number) => void;
 }
 
 const Countdown: React.FunctionComponent<CountdownProps> = ({
   until,
   stop = 0,
   onFinish,
+  onChange,
 }): JSX.Element => {
   const [time, setTime] = useState(until);
   const [completed, setCompleted] = useState(false);
@@ -33,6 +35,9 @@ const Countdown: React.FunctionComponent<CountdownProps> = ({
       } else {
         if (time != stop) {
           setTime((prevState) => prevState - 1);
+          if (onChange) {
+            onChange(time);
+          }
         }
       }
     }, 1000);
