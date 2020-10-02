@@ -1,6 +1,6 @@
 import {ViewStyle, StyleSheet, TextStyle} from 'react-native';
 import {Colors, Helpers} from '@Theme/index';
-import {deviceHeight, normalize} from '@Utils/Device';
+import {deviceHeight, normalize} from '@Plugins/Device';
 
 interface StyleProps {
   container: ViewStyle;

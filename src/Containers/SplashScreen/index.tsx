@@ -3,8 +3,8 @@ import {Text, Animated} from 'react-native';
 import NavigationHelper from '@Plugins/NavigationHelper';
 import {Background} from '@Components/index';
 import {Colors, Helpers} from '@Theme/index';
-import {deviceWidth, normalize} from '@Utils/Device';
-import {getData} from '@Utils/Storage';
+import {deviceWidth, normalize} from '@Plugins/Device';
+import {getData} from '@Plugins/Storage';
 import {useDispatch} from 'react-redux';
 import {setHighScore} from '@Stores/Question/Actions';
 

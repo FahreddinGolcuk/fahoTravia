@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 import {addScore, increaseQuestionCount} from '@Stores/Question/Actions';
 import NavigationHelper from '@Plugins/NavigationHelper';
 import {Colors} from '@Theme/index';
-import {normalize} from '@Utils/Device';
+import {normalize} from '@Plugins/Device';
 
 interface CorrectAnswerScreenProps {
   route?: object | any;

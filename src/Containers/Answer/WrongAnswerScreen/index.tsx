@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 import {resetQuestionCount, resetScore} from '@Stores/Question/Actions';
 import NavigationHelper from '@Plugins/NavigationHelper';
 import {Colors} from '@Theme/index';
-import {normalize} from '@Utils/Device';
+import {normalize} from '@Plugins/Device';
 
 const WrongAnswerScreen = (): JSX.Element => {
   const dispatch = useDispatch();

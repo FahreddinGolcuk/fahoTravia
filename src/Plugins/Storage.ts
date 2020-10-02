@@ -17,9 +17,9 @@ export const getData = async (key: string) => {
   }
 };
 
-export const mergeData = async (value: number) => {
+export const mergeData = async (key: string, value: number) => {
   try {
-    await AsyncStorage.mergeItem('@scores', JSON.stringify(value));
+    await AsyncStorage.mergeItem(key, JSON.stringify(value));
   } catch (e) {}
 };
 
