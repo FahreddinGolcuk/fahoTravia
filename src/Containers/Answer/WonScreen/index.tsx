@@ -5,7 +5,7 @@ import NavigationHelper from '@Plugins/NavigationHelper';
 import {useDispatch} from 'react-redux';
 import {resetQuestionCount} from '@Stores/Question/Actions';
 import {Colors} from '@Theme/index';
-import {normalize} from '@Utils/Device';
+import {normalize} from '@Plugins/Device';
 
 const WonScreen = (): JSX.Element => {
   const dispatch = useDispatch();

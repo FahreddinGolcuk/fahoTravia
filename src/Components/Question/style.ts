@@ -1,6 +1,6 @@
 import {StyleSheet, TextStyle} from 'react-native';
 import {Colors} from '@Theme/index';
-import {normalize} from '@Utils/Device';
+import {normalize} from '@Plugins/Device';
 
 interface StyleProps {
   title: TextStyle;

@@ -1,5 +1,5 @@
 import {FlexStyle, StyleSheet} from 'react-native';
-import {normalize} from '@Utils/Device';
+import {normalize} from '@Plugins/Device';
 
 interface Styles {
   margin1: FlexStyle;

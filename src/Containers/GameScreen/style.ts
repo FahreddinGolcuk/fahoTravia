@@ -1,5 +1,5 @@
 import {StyleSheet, ViewStyle} from 'react-native';
-import {normalize} from '@Utils/Device';
+import {normalize} from '@Plugins/Device';
 
 interface StyleProps {
   topBar: ViewStyle;

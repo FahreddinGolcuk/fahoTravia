@@ -1,6 +1,6 @@
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 import {Colors, Helpers} from '@Theme/index';
-import {normalize} from '@Utils/Device';
+import {normalize} from '@Plugins/Device';
 
 interface StyleProps {
   box: ViewStyle;

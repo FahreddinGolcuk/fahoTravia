@@ -20,7 +20,7 @@ import {Helpers} from '@Theme/index';
 import _style from './style';
 import {useFocusEffect} from '@react-navigation/native';
 import {setHighScore, shitJoker} from '@Stores/Question/Actions';
-import {storeData} from '@Utils/Storage';
+import {storeData} from '@Plugins/Storage';
 
 const GameScreen = ({navigation}): JSX.Element => {
   let time = 15;

@@ -4,7 +4,7 @@ import NavigationHelper from '@Plugins/NavigationHelper';
 import {itemsCategory, itemsDifficulties} from '@Utils/Items';
 import {Text} from 'react-native';
 import _style from './style';
-import {normalize} from '@Utils/Device';
+import {normalize} from '@Plugins/Device';
 import {useDispatch, useSelector} from 'react-redux';
 import {shitJoker} from '@Stores/Question/Actions';
 import {getHighScore} from '@Stores/Question/Selectors';

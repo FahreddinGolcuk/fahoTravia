@@ -1,6 +1,6 @@
 import React from 'react';
 import {Animated, ImageProps} from 'react-native';
-import {normalize} from '@Utils/Device';
+import {normalize} from '@Plugins/Device';
 
 interface AnimatedImageProps {
   source: ImageProps;

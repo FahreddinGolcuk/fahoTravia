@@ -1,6 +1,6 @@
 import React from 'react';
 import {Picker as PickerNative} from '@react-native-community/picker';
-import {deviceWidth, normalize} from '@Utils/Device';
+import {deviceWidth, normalize} from '@Plugins/Device';
 
 interface PickerProps {
   items: Array<{label: string; value: any}>;
