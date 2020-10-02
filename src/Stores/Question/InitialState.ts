@@ -5,4 +5,5 @@ export const INITIAL_STATE: QuestionsState = {
   questions: [],
   whichQuestion: 0,
   score: 0,
+  joker: true,
 };

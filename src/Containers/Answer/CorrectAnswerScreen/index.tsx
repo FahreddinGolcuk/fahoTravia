@@ -7,9 +7,14 @@ import NavigationHelper from '@Plugins/NavigationHelper';
 import {Colors} from '@Theme/index';
 import {normalize} from '@Utils/Device';
 
-const CorrectAnswerScreen = ({route}): JSX.Element => {
+interface CorrectAnswerScreenProps {
+  route?: object | any;
+}
+
+const CorrectAnswerScreen: React.FunctionComponent<CorrectAnswerScreenProps> = ({
+  route,
+}): JSX.Element => {
   const {score} = route.params;
-  console.log(score);
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
