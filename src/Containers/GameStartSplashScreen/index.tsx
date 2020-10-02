@@ -37,14 +37,14 @@ const GameStartSplashScreen: React.FunctionComponent<{
   ).start();
 
   return (
-    <Background style={[Helpers.center, {backgroundColor: Colors.secondary}]}>
+    <Background style={[Helpers.center, {backgroundColor: Colors.danger}]}>
       <Animated.View
         style={{
           transform: [{translateX: translateX}],
           width: deviceWidth() / 3,
           height: 16,
-          backgroundColor: Colors.tertiary,
-          shadowColor: Colors.tertiary,
+          backgroundColor: Colors.primary,
+          shadowColor: Colors.primary,
           borderRadius: 16,
           shadowOffset: {
             width: 5,

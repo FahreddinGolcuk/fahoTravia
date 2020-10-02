@@ -55,12 +55,17 @@ const GameScreen = ({navigation}): JSX.Element => {
         <View style={[Helpers.crossCenter]}>
           <Text>Remaining Time</Text>
           <Countdown
-            onFinish={() => {
+            onFinish={async () => {
               const isFocused = navigation.isFocused();
-              isFocused &&
+              if (isFocused) {
+                if (score > highScore) {
+                  dispatch(setHighScore({highScore: score}));
+                  await storeData('@score', score);
+                }
                 NavigationHelper.navigate('TimePass', {
                   difficulty: currentQuestion.difficulty,
                 });
+              }
             }}
             until={time}
             onChange={(current) => {
@@ -83,6 +88,8 @@ const GameScreen = ({navigation}): JSX.Element => {
         pressed={async (value) => {
           if (value === currentQuestion.correct_answer) {
             if (questionCount == 9) {
+              dispatch(setHighScore({highScore: score}));
+              await storeData('@score', score);
               NavigationHelper.navigate('Won', {
                 difficulty: currentQuestion.difficulty,
               });
