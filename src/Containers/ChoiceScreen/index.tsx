@@ -5,11 +5,14 @@ import {itemsCategory, itemsDifficulties} from '@Utils/Items';
 import {Text} from 'react-native';
 import _style from './style';
 import {normalize} from '@Utils/Device';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {shitJoker} from '@Stores/Question/Actions';
+import {getHighScore} from '@Stores/Question/Selectors';
+import {Colors} from '@Theme/index';
 
 const ChoiceScreen = (): JSX.Element => {
   const dispatch = useDispatch();
+  const highScore = useSelector(getHighScore);
   const [selectedCategory, setSelectedCategory] = useState(
     itemsCategory[0].value,
   );
@@ -19,8 +22,15 @@ const ChoiceScreen = (): JSX.Element => {
 
   return (
     <Background>
-      <Text style={_style.title}>WELCOME TO FAHOTRAVIA</Text>
       <Text style={_style.subtitle}>Choose your category & difficult</Text>
+      <Text style={_style.subtitle}>HIGH SCORE</Text>
+      <Text
+        style={[
+          _style.subtitle,
+          {color: Colors.danger, fontSize: normalize(30)},
+        ]}>
+        {highScore}
+      </Text>
       <Picker
         selectedValue={selectedCategory}
         onChange={setSelectedCategory}
@@ -35,7 +45,7 @@ const ChoiceScreen = (): JSX.Element => {
         style={{margin: normalize(75)}}
         title="GO!"
         onPress={() => {
-          dispatch(shitJoker());
+          dispatch(shitJoker({joker: false}));
           NavigationHelper.navigate('StartSplash', {
             category: selectedCategory,
             difficult: selectedDifficult,

@@ -9,6 +9,7 @@ import {
 import {Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {
+  getHighScore,
   getJokerState,
   getQuestionCount,
   getQuestions,
@@ -18,7 +19,8 @@ import NavigationHelper from '@Plugins/NavigationHelper';
 import {Helpers} from '@Theme/index';
 import _style from './style';
 import {useFocusEffect} from '@react-navigation/native';
-import {shitJoker} from '@Stores/Question/Actions';
+import {setHighScore, shitJoker} from '@Stores/Question/Actions';
+import {storeData} from '@Utils/Storage';
 
 const GameScreen = ({navigation}): JSX.Element => {
   let time = 15;
@@ -28,6 +30,7 @@ const GameScreen = ({navigation}): JSX.Element => {
   const questionCount = useSelector(getQuestionCount);
   const jokerState = useSelector(getJokerState);
   const score = useSelector(getScore);
+  const highScore = useSelector(getHighScore);
   const [joker, setJoker] = useState(false);
 
   useFocusEffect(
@@ -71,13 +74,13 @@ const GameScreen = ({navigation}): JSX.Element => {
         title="%50 Joker"
         onPress={() => {
           setJoker(true);
-          dispatch(shitJoker());
+          dispatch(shitJoker({joker: true}));
         }}
       />
       <Question question={currentQuestion.question} />
       <Answer
         isJokerUsed={joker}
-        pressed={(value) => {
+        pressed={async (value) => {
           if (value === currentQuestion.correct_answer) {
             if (questionCount == 9) {
               NavigationHelper.navigate('Won', {
@@ -104,9 +107,11 @@ const GameScreen = ({navigation}): JSX.Element => {
               });
             }
           } else {
-            NavigationHelper.navigate('Wrong', {
-              difficulty: currentQuestion.difficulty,
-            });
+            if (score > highScore) {
+              dispatch(setHighScore({highScore: score}));
+              await storeData('@score', score);
+            }
+            NavigationHelper.navigate('Wrong');
           }
         }}
         correct={currentQuestion.correct_answer}

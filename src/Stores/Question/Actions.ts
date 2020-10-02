@@ -6,6 +6,7 @@ import {
   QuestionsActionTypes,
   RESET_QUESTION_COUNT,
   RESET_SCORE,
+  SET_HIGH_SCORE,
   USED_JOKER,
 } from './Types';
 import QuestionService from '@Services/QuestionService';
@@ -56,8 +57,18 @@ export function addScore(payload: {score: number}): QuestionsActionTypes {
   };
 }
 
-export function shitJoker(): QuestionsActionTypes {
+export function shitJoker(payload: {joker: boolean}): QuestionsActionTypes {
   return {
     type: USED_JOKER,
+    payload,
+  };
+}
+
+export function setHighScore(payload: {
+  highScore: number;
+}): QuestionsActionTypes {
+  return {
+    type: SET_HIGH_SCORE,
+    payload,
   };
 }
