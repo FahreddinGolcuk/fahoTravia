@@ -5,8 +5,11 @@ import {itemsCategory, itemsDifficulties} from '@Utils/Items';
 import {Text} from 'react-native';
 import _style from './style';
 import {normalize} from '@Utils/Device';
+import {useDispatch} from 'react-redux';
+import {shitJoker} from '@Stores/Question/Actions';
 
 const ChoiceScreen = (): JSX.Element => {
+  const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState(
     itemsCategory[0].value,
   );
@@ -31,12 +34,13 @@ const ChoiceScreen = (): JSX.Element => {
       <Button
         style={{margin: normalize(75)}}
         title="GO!"
-        onPress={() =>
+        onPress={() => {
+          dispatch(shitJoker());
           NavigationHelper.navigate('StartSplash', {
             category: selectedCategory,
             difficult: selectedDifficult,
-          })
-        }
+          });
+        }}
       />
     </Background>
   );

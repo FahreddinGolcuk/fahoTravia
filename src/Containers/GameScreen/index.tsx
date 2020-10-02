@@ -7,8 +7,9 @@ import {
   Question,
 } from '@Components/index';
 import {Text, View} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {
+  getJokerState,
   getQuestionCount,
   getQuestions,
   getScore,
@@ -16,14 +17,24 @@ import {
 import NavigationHelper from '@Plugins/NavigationHelper';
 import {Helpers} from '@Theme/index';
 import _style from './style';
+import {useFocusEffect} from '@react-navigation/native';
+import {shitJoker} from '@Stores/Question/Actions';
 
 const GameScreen = ({navigation}): JSX.Element => {
   let time = 15;
   let currentCount = 15;
+  const dispatch = useDispatch();
   const questions = useSelector(getQuestions);
   const questionCount = useSelector(getQuestionCount);
+  const jokerState = useSelector(getJokerState);
   const score = useSelector(getScore);
   const [joker, setJoker] = useState(false);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      setJoker(false);
+    }, []),
+  );
   // @ts-ignore
   const currentQuestion = questions[0][questionCount];
   console.log(currentQuestion);
@@ -43,7 +54,10 @@ const GameScreen = ({navigation}): JSX.Element => {
           <Countdown
             onFinish={() => {
               const isFocused = navigation.isFocused();
-              isFocused && NavigationHelper.navigate('TimePass');
+              isFocused &&
+                NavigationHelper.navigate('TimePass', {
+                  difficulty: currentQuestion.difficulty,
+                });
             }}
             until={time}
             onChange={(current) => {
@@ -53,10 +67,11 @@ const GameScreen = ({navigation}): JSX.Element => {
         </View>
       </View>
       <Button
-        disable={joker}
+        disable={jokerState}
         title="%50 Joker"
         onPress={() => {
           setJoker(true);
+          dispatch(shitJoker());
         }}
       />
       <Question question={currentQuestion.question} />
@@ -65,7 +80,9 @@ const GameScreen = ({navigation}): JSX.Element => {
         pressed={(value) => {
           if (value === currentQuestion.correct_answer) {
             if (questionCount == 9) {
-              NavigationHelper.navigate('Won');
+              NavigationHelper.navigate('Won', {
+                difficulty: currentQuestion.difficulty,
+              });
             } else {
               let factor = 1;
               switch (currentQuestion.difficulty) {
@@ -87,7 +104,9 @@ const GameScreen = ({navigation}): JSX.Element => {
               });
             }
           } else {
-            NavigationHelper.navigate('Wrong');
+            NavigationHelper.navigate('Wrong', {
+              difficulty: currentQuestion.difficulty,
+            });
           }
         }}
         correct={currentQuestion.correct_answer}

@@ -8,6 +8,7 @@ import {
   QuestionsState,
   RESET_QUESTION_COUNT,
   RESET_SCORE,
+  USED_JOKER,
 } from './Types';
 
 const initialState: QuestionsState = INITIAL_STATE;
@@ -46,6 +47,11 @@ export default function questionsReducer(
       return <QuestionsState>{
         ...state,
         score: state.score += action.payload.score,
+      };
+    case USED_JOKER:
+      return <QuestionsState>{
+        ...state,
+        joker: !state.joker,
       };
     default:
       return state;
