@@ -8,6 +8,7 @@ import {
   QuestionsState,
   RESET_QUESTION_COUNT,
   RESET_SCORE,
+  SET_HIGH_SCORE,
   USED_JOKER,
 } from './Types';
 
@@ -51,7 +52,12 @@ export default function questionsReducer(
     case USED_JOKER:
       return <QuestionsState>{
         ...state,
-        joker: !state.joker,
+        joker: action.payload.joker,
+      };
+    case SET_HIGH_SCORE:
+      return <QuestionsState>{
+        ...state,
+        highScore: action.payload.highScore,
       };
     default:
       return state;

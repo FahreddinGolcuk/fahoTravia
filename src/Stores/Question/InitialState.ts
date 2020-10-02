@@ -6,4 +6,5 @@ export const INITIAL_STATE: QuestionsState = {
   whichQuestion: 0,
   score: 0,
   joker: true,
+  highScore: 0,
 };

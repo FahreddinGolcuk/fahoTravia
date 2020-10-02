@@ -10,3 +10,6 @@ export const getScore = (state: AppState): number => state.questions.score;
 
 export const getJokerState = (state: AppState): boolean =>
   state.questions.joker;
+
+export const getHighScore = (state: AppState): number =>
+  state.questions.highScore;

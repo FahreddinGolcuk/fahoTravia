@@ -4,6 +4,7 @@ export interface QuestionsState {
   difficult: string;
   score: number;
   joker: boolean;
+  highScore: number;
 }
 
 export interface QuestionEditPayload {
@@ -12,6 +13,7 @@ export interface QuestionEditPayload {
   difficult?: string;
   score?: number;
   joker?: boolean;
+  highScore?: number;
 }
 
 export const PUSH_QUESTIONS = 'PUSH_QUESTIONS';
@@ -56,6 +58,14 @@ export const USED_JOKER = 'USED_JOKER';
 
 interface UsedJokerAction {
   type: typeof USED_JOKER;
+  payload: QuestionEditPayload;
+}
+
+export const SET_HIGH_SCORE = 'SET_HIGH_SCORE';
+
+interface SetHighScoreAction {
+  type: typeof SET_HIGH_SCORE;
+  payload: QuestionEditPayload;
 }
 
 export type QuestionsActionTypes =
@@ -65,4 +75,5 @@ export type QuestionsActionTypes =
   | ResetQuestionCountAction
   | ResetScoreAction
   | AddScoreAction
-  | UsedJokerAction;
+  | UsedJokerAction
+  | SetHighScoreAction;
