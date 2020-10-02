@@ -42,7 +42,7 @@ const Countdown: React.FunctionComponent<CountdownProps> = ({
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, [completed, onFinish, stop, time]);
+  }, [completed, onChange, onFinish, stop, time]);
   return (
     <View>
       <Text>{time}</Text>
