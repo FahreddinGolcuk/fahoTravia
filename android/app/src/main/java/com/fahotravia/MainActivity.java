@@ -1,4 +1,4 @@
-package com.fahotravia;
+package com.fagorn.queasy;
 
 import com.facebook.react.ReactActivity;
 
