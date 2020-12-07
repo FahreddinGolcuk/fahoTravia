@@ -88,7 +88,7 @@ const GameScreen = ({navigation}): JSX.Element => {
         pressed={async (value) => {
           if (value === currentQuestion.correct_answer) {
             if (questionCount == 9) {
-              dispatch(setHighScore({highScore: score}));
+              dispatch(setHighScore({highScore: score})); //son highscore dan yüksek mi kontolü yapılmamış.
               await storeData('@score', score);
               NavigationHelper.navigate('Won', {
                 difficulty: currentQuestion.difficulty,
